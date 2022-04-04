@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Products</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>info par produktu </h1>
+    
+    
+    <table> 
+    <tr th:each="temp: ${object}"> 
+    
+      <td th:text="${temp.getId()}" />
+	  <td th:text="${temp.getTitle()}" />
+	  
+	  <td th:text="${temp.getDescription()}" />
+	  
+	  <td th:text="${temp.getQuantity()}" />
+	  
+	  <td th:text="${temp.getPrice()}" />
+	
+
+    
+    </table>
+    
+    
+  
+
+
+
+	<img src="https://www.collinsdictionary.com/images/full/apple_158989157.jpg" alt="Ukraine Flag" width="500" height="600">
+
+  
+  
+  
+  
+  </body>
+</html>
+
+

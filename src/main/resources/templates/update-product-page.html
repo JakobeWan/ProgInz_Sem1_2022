@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>
+Update Page
+</title>
+</head>
+
+
+
+<body>
+
+<h1> Update product parametres</h1>
+
+<form action="#" th:action="@{/updateProduct/__${id}__}" th:object="${product}" method="post">
+  <label for="title">Product title:</label> 
+  <input type="text" th:field="*{title}" ><br><br>
+  <label for="description">Product Description:</label>
+  <input type="text" th:field="*{description}" ><br><br>
+  <label for="price">Product Price:</label>
+  <input type="text" th:field="*{price}" ><br><br>
+  <label for="quantity">Product Quantity:</label>
+  <input type="text" th:field="*{quantity}" ><br><br>
+ 
+  <input type="submit" value="Update">
+</form>
+
+
+
+</body>
+</html>
