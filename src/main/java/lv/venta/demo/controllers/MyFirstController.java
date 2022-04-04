@@ -157,7 +157,7 @@ public String getUpdateProduct (@PathVariable (name = "id")int id, Model model)
 	
 	
 }
-
+//some sort of comment
 @PostMapping ("/updateProduct/{id}")
 public String postUpdateProduct (@PathVariable (name = "id")int id, Product product)
 {
