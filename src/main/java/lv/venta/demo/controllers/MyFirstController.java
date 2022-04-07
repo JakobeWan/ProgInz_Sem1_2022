@@ -3,9 +3,12 @@ package lv.venta.demo.controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -128,12 +131,21 @@ public String getAddProduct (Product product)
 //3. postMapping funkcija, kas saņem aizpildīto objektu un saglabā sarakstā
 
 @PostMapping ("/addProduct")
-public String postAddProduct (Product product) //Aizpildītais produkts
+public String postAddProduct (@Valid Product product, BindingResult result) //Aizpildītais produkts
 {
-	if(productCRUDService.createNewProduct(product))
-	return "redirect:/allProducts"; //post norāda uz kuru adresi pāradresēt produktus
-	else 
-		return "redirect:/error";
+	
+	if (!result.hasErrors()) {
+		
+		if(productCRUDService.createNewProduct(product))
+			return "redirect:/allProducts"; //post norāda uz kuru adresi pāradresēt produktus
+			else 
+				return "redirect:/error";
+		
+	}
+	else {
+		
+		return"add-product-page";
+	}
 	
 }
 
