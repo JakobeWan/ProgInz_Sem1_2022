@@ -15,16 +15,34 @@ Update Page
 <h1> Update product parametres</h1>
 
 <form action="#" th:action="@{/updateProduct/__${id}__}" th:object="${product}" method="post">
-  <label for="title">Product title:</label> 
-  <input type="text" th:field="*{title}" ><br><br>
-  <label for="description">Product Description:</label>
-  <input type="text" th:field="*{description}" ><br><br>
-  <label for="price">Product Price:</label>
-  <input type="text" th:field="*{price}" ><br><br>
-  <label for="quantity">Product Quantity:</label>
-  <input type="text" th:field="*{quantity}" ><br><br>
- 
-  <input type="submit" value="Update">
+
+ <table>
+        <tr>
+                <td><label>Nosaukums</label></td>
+                <td><input type="text" th:field="*{title}"/></td> <!-- tiek saglabāts teksts product.title -->
+                <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}" />
+        </tr>
+        
+        <tr>
+                <td><label>Apraksts</label></td>
+                <td><input type="text" th:field="*{description}"/></td>
+                <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}" />
+        </tr>
+        
+        <tr>
+                <td><label>Cena</label></td>
+                <td><input type="text" th:field="*{price}"/></td>
+                <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}" />
+                
+        </tr>
+        <tr>
+                <td><label>Daudzums</label></td>
+                <td><input type="text" th:field="*{quantity}"/></td>
+                <td th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" />
+                
+        </tr>
+        </table>
+        
 </form>
 
 

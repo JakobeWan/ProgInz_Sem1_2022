@@ -11,52 +11,34 @@
 
 <form action="#" th:action="@{/addProduct}" th:object="${product}" method="post">
   
+     <table>
+        <tr>
+                <td><label>Nosaukums</label></td>
+                <td><input type="text" th:field="*{title}"/></td> <!-- tiek saglabāts teksts product.title -->
+                <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}" />
+        </tr>
+        
+        <tr>
+                <td><label>Apraksts</label></td>
+                <td><input type="text" th:field="*{description}"/></td>
+                <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}" />
+        </tr>
+        
+        <tr>
+                <td><label>Cena</label></td>
+                <td><input type="text" th:field="*{price}"/></td>
+                <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}" />
+                
+        </tr>
+        <tr>
+                <td><label>Daudzums</label></td>
+                <td><input type="text" th:field="*{quantity}"/></td>
+                <td th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" />
+                
+        </tr>
+        </table>
+        
   
-  <table> 
-  
-  
-  <tr> 
-  
-  	<td> <label for="title">Product title:</label></td> <!--> Tiek saglabāts teksts product.title-->
-  <td> <input type="text" th:field="*{title}" ></td> 
-  <td> th:if="${#fields.hasErrors('title')}" th:errors="*{title}"</td>
-  
-  
-  
-  </tr>
-  
-  
-  <tr>
-  
-  
-  
-	  <td> <label for="description">Product Description:</label></td>
-	  <td><input type="text" th:field="*{description}"></td>
-	  <td> th:if="${#fields.hasErrors('description')}" th:errors="*{description}"</td>
-	
-	  
-  
-   </tr>
-  
-  
-    <tr>
-
-	  <td><label for="price">Product Price:</label></td>
-	  <td><input type="text" th:field="*{price}" ></td>
-	  <td> th:if="${#fields.hasErrors('price')}" th:errors="*{price}"</td>
-
-  </tr>
-  
-     
-  <tr>
-
-	  <td><label for="quantity">Product Quantity:</label></td>
-	  <td><input type="text" th:field="*{quantity}" ></td>
-	  <td> th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"</td>
-
-  </tr>
-  
-  </table>
  
   <input type="submit" value="Submit">
 </form>
