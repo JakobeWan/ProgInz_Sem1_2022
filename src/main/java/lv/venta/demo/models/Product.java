@@ -2,6 +2,9 @@ package lv.venta.demo.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -18,6 +21,8 @@ public class Product {
 	// toString
 	
 	@Column(name="Id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
 	@Column(name="Title")
@@ -41,16 +46,12 @@ public class Product {
 	private float price;
 	
 	
-	private static int counter = 1000;
 	
 	
 	public int getId() {
 		return id;
 	}
-	public void setId() {
-		this.id = counter;
-		counter++;
-	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -93,7 +94,7 @@ public class Product {
 	
 	public Product(String title, String description, int quantity, float price) {
 	
-		setId();
+		
 		setTitle(title);
 		setDescription(description);
 		setQuantity(quantity);
