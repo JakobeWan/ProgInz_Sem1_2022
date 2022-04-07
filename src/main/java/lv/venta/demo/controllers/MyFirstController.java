@@ -171,16 +171,25 @@ public String getUpdateProduct (@PathVariable (name = "id")int id, Model model)
 }
 //some sort of comment
 @PostMapping ("/updateProduct/{id}")
-public String postUpdateProduct (@PathVariable (name = "id")int id, Product product)
+public String postUpdateProduct (@PathVariable (name = "id")int id, @Valid Product product, BindingResult result)
+	
 {
 	
-		if (productCRUDService.updateProductById(id, product))
+if (!result.hasErrors())
+{if (productCRUDService.updateProductById(id, product))
+	
+	
+	return "redirect:/allProducts/"+id;
+	
+else 
+return "redirect:/error";
+	
+}
+
+else {
+	return"update-product-page";
+}
 		
-			
-			return "redirect:/allProducts/"+id;
-			
-		else 
-	return "redirect:/error";
 }
 @GetMapping ("/error")
 public String getError ()
