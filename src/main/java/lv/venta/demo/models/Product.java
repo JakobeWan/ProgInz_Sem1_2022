@@ -1,10 +1,15 @@
 package lv.venta.demo.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+@Table(name="product_table")
+@Entity
 public class Product {
 	
 	//id, title, description, quantity, price
@@ -12,21 +17,25 @@ public class Product {
 	//constructors - both 
 	// toString
 	
-	
+	@Column(name="Id")
 	private int id;
 	
+	@Column(name="Title")
 	@Size(min=4, max=20)
 	@Pattern (regexp = "[A-Z,Ā,Č,Ē,Ī,Ū,Ņ,Š,Ķ,Ģ,Ž]{1} [a-z\\s,ā,č,ē,ī,ū,ņ,š,ķ,ģ,ž]+")
 	private String title;
 	
+	@Column(name="Description")
 	@Size(min=4, max=20)
 	@Pattern (regexp = "[A-Z,Ā,Č,Ē,Ī,Ū,Ņ,Š,Ķ,Ģ,Ž]{1} [a-z\\s,ā,č,ē,ī,ū,ņ,š,ķ,ģ,ž]+")
 	private String description;
 	
+	@Column(name="Quantity")
 	@Min (value=1)
 	@Max (value=1000)
 	private int quantity;
 	
+	@Column(name="Price")
 	@Min (value=0)
 	@Max (value=10000)
 	private float price;
