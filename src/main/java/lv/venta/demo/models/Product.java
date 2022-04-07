@@ -27,12 +27,12 @@ public class Product {
 	
 	@Column(name="Title")
 	@Size(min=4, max=20)
-	@Pattern (regexp = "[A-Z,Ā,Č,Ē,Ī,Ū,Ņ,Š,Ķ,Ģ,Ž]{1} [a-z\\s,ā,č,ē,ī,ū,ņ,š,ķ,ģ,ž]+")
+	@Pattern (regexp = "[A-Z]{1}[a-z]+")
 	private String title;
 	
 	@Column(name="Description")
 	@Size(min=4, max=20)
-	@Pattern (regexp = "[A-Z,Ā,Č,Ē,Ī,Ū,Ņ,Š,Ķ,Ģ,Ž]{1} [a-z\\s,ā,č,ē,ī,ū,ņ,š,ķ,ģ,ž]+")
+	@Pattern (regexp = "[A-ZĀ]{1}[a-z]+")
 	private String description;
 	
 	@Column(name="Quantity")
