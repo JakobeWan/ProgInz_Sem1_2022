@@ -1,5 +1,10 @@
 package lv.venta.demo.models;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class Product {
 	
 	//id, title, description, quantity, price
@@ -7,11 +12,26 @@ public class Product {
 	//constructors - both 
 	// toString
 	
+	
 	private int id;
+	
+	@Size(min=4, max=20)
+	@Pattern (regexp = "[A-Z,Ā,Č,Ē,Ī,Ū,Ņ,Š,Ķ,Ģ,Ž]{1} [a-z\\s,ā,č,ē,ī,ū,ņ,š,ķ,ģ,ž]+")
 	private String title;
+	
+	@Size(min=4, max=20)
+	@Pattern (regexp = "[A-Z,Ā,Č,Ē,Ī,Ū,Ņ,Š,Ķ,Ģ,Ž]{1} [a-z\\s,ā,č,ē,ī,ū,ņ,š,ķ,ģ,ž]+")
 	private String description;
+	
+	@Min (value=1)
+	@Max (value=1000)
 	private int quantity;
+	
+	@Min (value=0)
+	@Max (value=10000)
 	private float price;
+	
+	
 	private static int counter = 1000;
 	
 	
